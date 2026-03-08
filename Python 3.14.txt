@@ -1,0 +1,33 @@
+Python 3.14.3 (tags/v3.14.3:323c59a, Feb  3 2026, 16:04:56) [MSC v.1944 64 bit (AMD64)] on win32
+Type "help", "copyright", "credits" or "license" for more information.
+...         # Wir prüfen, ob an der neuen Stelle eine Wand ist
+...         pos = canvas.coords(obj)
+...         überlappung = canvas.find_overlapping(pos[0]+dx, pos[1]+dy, pos[2]+dx, pos[3]+dy)
+...
+...         # Wenn kein Block (ID 2) im Weg ist, bewege dich
+...         ist_wand = any(item == 2 for item in überlappung) # ID 2 ist die Wand
+...         if not ist_wand:
+...             canvas.move(obj, dx, dy)
+...         else:
+...             print("BLOCK! L{0}") # Deine Logik: Stopp bei Wand
+...
+... # GRAFIK-SETUP
+... root = tk.Tk()
+... root.title("Pacman Hex-Engine v2")
+... canvas = tk.Canvas(root, width=400, height=400, bg="black")
+... canvas.pack()
+...
+... # OBJEKTE ERSTELLEN
+... wand = canvas.create_rectangle(100, 100, 150, 150, fill="blue") # ID 2
+... pacman = canvas.create_oval(180, 180, 210, 210, fill="yellow")
+... geist = canvas.create_rectangle(50, 50, 80, 80, fill="red")
+...
+... # TEST-BEFEHLE (Simulation deiner Sprache)
+... # Bewege Pacman nach Links (dr{03)
+... root.after(1000, lambda: befehl_ausfuehren("dr{03{iz{1e", canvas, pacman, "pm"))
+... # Bewege Geist nach Unten (syp{iz{G1)
+... root.after(1500, lambda: befehl_ausfuehren("dr{02{iz{20", canvas, geist, "syp"))
+...
+... root.mainloop()
+...
+BLOCK! L{0}

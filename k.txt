@@ -1,0 +1,110 @@
+Python 3.14.3 (tags/v3.14.3:323c59a, Feb  3 2026, 16:04:56) [MSC v.1944 64 bit (AMD64)] on win32
+Type "help", "copyright", "credits" or "license" for more information.
+...
+... canvas = tk.Canvas(root, width=400, height=400, bg="black")
+... canvas.pack()
+...
+... # Login-UI (sy{pw)
+... t1 = canvas.create_text(200, 150, text="SYSTEM LOCKED", fill="red", font=("Courier", 16))
+... t2 = canvas.create_text(200, 180, text="GIB HEX-CODE EIN (A1):", fill="white", font=("Courier", 10))
+... pw_entry = tk.Entry(root, bg="black", fg="lime", insertbackground="white", justify="center")
+... pw_window = canvas.create_window(200, 220, window=pw_entry)
+...
+... # Pacman & Geister (syp) - erst nach Login voll aktiv
+... pacman = canvas.create_oval(180, 300, 210, 330, fill="yellow")
+...
+... # --- STEUERUNG (in{ky) ---
+... root.bind('<Return>', lambda e: login_check(e, pw_entry, canvas, [t1, t2, pw_window]))
+...
+... # Bewegung nach dem Login
+... def move(r):
+...     if system_status == "RUN":
+...         verarbeite_befehl(f"dr{{{r}}}{{iz{{14", canvas, pacman)
+...
+... root.bind("<Up>", lambda e: move("01"))
+... root.bind("<Down>", lambda e: move("02"))
+... root.bind("<Left>", lambda e: move("03"))
+... root.bind("<Right>", lambda e: move("04"))
+...
+... # --- WICHTIG: Das Fenster offen halten ---
+... print("SYSTEM READY. WARTE AUF BOOT...")
+... root.mainloop()
+...
+SYSTEM READY. WARTE AUF BOOT...
+IZ-FLOW OS: L{1} - BOOT SUCCESS
+>>> def lade_map(canvas):
+...         # gf{mp: Liest das Muster und zeichnet Wände
+...                     # 1 = Wand (bk), 0 = Weg
+...                                 map_daten = [
+...                                         "1111111111",
+...                                                 "1000000001",
+...                                                         "1011101101",
+...                                                                 "1000000001",
+...                                                                         "1111111111"
+...                                                                             ]
+...
+>>>     for r_idx, reihe in enumerate(map_daten):
+  File "<python-input-2>", line 1
+    for r_idx, reihe in enumerate(map_daten):
+IndentationError: unexpected indent
+>>>         for c_idx, kachel in enumerate(reihe):
+  File "<python-input-3>", line 1
+    for c_idx, kachel in enumerate(reihe):
+IndentationError: unexpected indent
+>>>             if kachel == "1":
+  File "<python-input-4>", line 1
+    if kachel == "1":
+IndentationError: unexpected indent
+>>>                 # Erstellt einen blauen Block (bk{iz{01)
+>>>                 canvas.create_rectangle(c_idx*40, r_idx*40, c_idx*40+40, r_idx*40+40,
+  File "<python-input-6>", line 1
+    canvas.create_rectangle(c_idx*40, r_idx*40, c_idx*40+40, r_idx*40+40,
+IndentationError: unexpected indent
+>>>                                        fill="blue", outline="navy", tags="bk")
+  File "<python-input-7>", line 1
+    fill="blue", outline="navy", tags="bk")
+IndentationError: unexpected indent
+>>>
+>>> # Rufe diese Funktion nach dem erfolgreichen Login auf:
+>>> # lade_map(canvas)
+>>>
+>>> adm{kl{iz{bk
+  File "<python-input-12>", line 1
+    adm{kl{iz{bk
+             ^
+SyntaxError: '{' was never closed
+...   File "<python-input-6>", line 1
+...     canvas.create_rectangle(c_idx*40, r_idx*40, c_idx*40+40, r_idx*40+40,
+... IndentationError: unexpected indent
+... >>>                                        fill="blue", outline="navy", tags="bk")
+...   File "<python-input-7>", line 1
+...     fill="blue", outline="navy", tags="bk")
+... IndentationError: unexpected indent
+... >>>
+... >>> # Rufe diese Funktion nach dem erfolgreichen Login auf:
+... >>> # lade_map(canvas)
+... >>>
+... >>> adm{kl{iz{bk
+...   File "<python-input-12>", line 1
+...     adm{kl{iz{bk
+...              ^
+... SyntaxError: '{' was never closed
+... >>> def speichere_daten(punktestand):
+... ...     # st{fl{sv - Wandelt Zahl in Hex und schreibt in Datei
+... ...     hex_score = hex(punktestand).upper().replace("0X", "")
+... ...     with open("save.iz", "w") as f:
+... ...         f.write(f"st{{iz{{{hex_score}")
+... ...     print(f"SYSTEM: DATEN GESICHERT (st{{iz{{{hex_score})")
+... ...
+... ... def lade_daten():
+... ...     # st{fl{ld - Liest die Datei und stellt den Stand wieder her
+... ...     try:
+... ...         with open("save.iz", "r") as f:
+... ...             inhalt = f.read()
+... ...             # Extrahiert den Hex-Wert nach iz{
+... ...             hex_wert = inhalt.split("iz{")[1].split("}")[0]
+... ...             return int(hex_wert, 16)
+... ...     except:
+... ...         return 0 # Wenn keine Datei da ist, starte bei 0
+... ... sy{ex{st{fl{sv
+...
