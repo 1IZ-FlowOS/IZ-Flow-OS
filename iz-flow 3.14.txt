@@ -1,0 +1,32 @@
+Python 3.14.3 (tags/v3.14.3:323c59a, Feb  3 2026, 16:04:56) [MSC v.1944 64 bit (AMD64)] on win32
+Type "help", "copyright", "credits" or "license" for more information.
+...     ===================
+...     |    IZ-FLOW   |
+...     ===================
+...     """
+...     print(logo)
+...
+... def main():
+...     show_logo()
+...     print("Gib einen IZ-Flow-Befehl ein (oder 'exit' zum Beenden):")
+...
+...     while True:
+...         command = input("> ").strip()
+...
+...         if command.lower() == 'exit':
+...             print("Beenden...")
+...             break
+...
+...         # Hier würden wir die Befehle parsen und ausführen
+...         # Zur Demo einfach simulieren wir eine Antwort
+...         if command == "dr{04":
+...             print("Bewege dich nach rechts.")
+...         elif command == "dr{03":
+...             print("Bewege dich nach links.")
+...         elif command == "wt{01":
+...             print("Warte 1 Sekunde.")
+...         else:
+...             print(f"Unbekannter Befehl: {command}")
+...
+... if __name__ == "__main__":
+...     main()
